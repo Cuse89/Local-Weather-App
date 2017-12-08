@@ -2,15 +2,41 @@
 <html lang="en">
 
 <head>
-
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <p>Temperature: <span id="temp"></span></p>
-    <p>Location: <span id="location"></span></p>
-    <p>Humidity: <span id="humidity"></span></p>
-    <p>Wind Speed: <span id="wind"></span></p>
-    <p>Direction: <span id="direction"></span></p>
+    <div id="header">
+        <h4 id="title">Weather Report</h4>
+        <h2 id="location"></h2>
+        <form id="location-form">
+            <input id="location-input" type="text" name="location-input" placeholder="Search by location name">
+            <input id="search" type="submit" value="Search">
+        </form>
+
+    </div>
+
+
+
+    <div id="content" class="container">
+
+        <p id="degrees">
+            <span class="bold" id="temp"></span> °C</p>
+
+
+        <div id="icon"></div>
+        <p class="bold" id="description"></p>
+        <p>Humidity:
+            <span class="bold" id="humidity"></span> %</p>
+        <p>Wind Speed:
+            <span class="bold" id="wind"></span> mph</p>
+        <p>Wind Direction:
+            <span class="bold" id="direction"></span>
+        </p>
+
+    </div>
     <script src="app.js"></script>
 </body>
 

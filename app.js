@@ -7,7 +7,7 @@ updateByLocation = (loc) => {
 };
 
 updateByGeo = (lat, lon) => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APPID}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=${APPID}`;
     sendRequest(url);
 };
 
@@ -24,12 +24,15 @@ sendRequest = (url) => {
 
 returnData = (request) => {
     const data = JSON.parse(request.responseText);
+    console.log(data)
     const weather = {};
     weather.location = data.name;
-    weather.temp = `${data.main.temp} celcius`;
-    weather.humidity = `${data.main.humidity}%`;
-    weather.wind = `${data.wind.speed} mph`;
+    weather.description = capitalizeFirstLetters(data.weather[0].description);
+    weather.temp = Math.round(data.main.temp);
+    weather.humidity = data.main.humidity;
+    weather.wind = data.wind.speed;
     weather.direction = convertDirection(data.wind.deg);
+    weather.iconCode = data.weather[0].icon;
     updateUI(weather);
 };
 
@@ -50,13 +53,19 @@ convertDirection = (degrees) => {
 updateUI = (weather) => {
     document.getElementById('temp').innerHTML = weather.temp;
     document.getElementById('location').innerHTML = weather.location;
+    document.getElementById('description').innerHTML = weather.description;
     document.getElementById('humidity').innerHTML = weather.humidity;
     document.getElementById('wind').innerHTML = weather.wind;
     document.getElementById('direction').innerHTML = weather.direction;
+    document.getElementById('icon').innerHTML = `<img src="http://openweathermap.org/img/w/${weather.iconCode}.png"/>`;
 };
 
 showPosition = (position) => {
     updateByGeo(position.coords.latitude, position.coords.longitude);
+};
+
+capitalizeFirstLetters = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
 window.onload = () => {
@@ -67,3 +76,14 @@ window.onload = () => {
         updateByLocation(location);
     }
 };
+
+locationSearch = () => {
+
+    const location = document.getElementById('location-input').value
+    alert(location);
+
+    updateByLocation(location);
+}
+
+document.getElementById('location-form').addEventListener('submit', locationSearch)
+

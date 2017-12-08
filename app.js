@@ -57,7 +57,7 @@ updateUI = (weather) => {
 
 showPosition = (position) => {
     updateByGeo(position.coords.latitude, position.coords.longitude);
-}
+};
 
 window.onload = () => {
     if (navigator.geolocation) {

@@ -2,12 +2,12 @@ const APPID = "d457b5971c6648f53c5c25f476262517"
 
 updateByLocation = (loc) => {
     const location = loc;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=${APPID}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=${APPID}`;
     sendRequest(url);
 };
 
 updateByGeo = (lat, lon) => {
-    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APPID}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APPID}`;
     sendRequest(url);
 };
 

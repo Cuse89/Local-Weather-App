@@ -60,7 +60,7 @@ img {
     font-size: 64px;
 }
 
-@media (min-width: 450px) {
+@media (min-width: 700px) {
     #header {
         flex-direction: row;
     }

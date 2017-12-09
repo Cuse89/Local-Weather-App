@@ -1,4 +1,4 @@
-const APPID = "d457b5971c6648f53c5c25f476262517"
+const APPID = "d457b5971c6648f53c5c25f476262517";
 
 updateByLocation = (loc) => {
     const location = loc;
@@ -77,11 +77,9 @@ window.onload = () => {
     }
 };
 
-locationSearch = () => {
-
-    const location = document.getElementById('location-input').value
-    alert(location);
-
+locationSearch = (e) => {
+    e.preventDefault();
+    const location = document.getElementById('location-input').value;
     updateByLocation(location);
 }
 

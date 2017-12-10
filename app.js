@@ -78,8 +78,10 @@ capitalizeFirstLetters = (string) => {
 
 locationSearch = (e) => {
     e.preventDefault();
+    const form = document.getElementById('location-form');
     const location = document.getElementById('location-input').value;
     updateByLocation(location);
+    form.reset();
 };
 
 setupEventListeners = () => {

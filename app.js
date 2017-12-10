@@ -24,7 +24,6 @@ sendRequest = (url) => {
 
 returnData = (request) => {
     const data = JSON.parse(request.responseText);
-    console.log(data)
     const weather = {};
     weather.location = data.name;
     weather.description = capitalizeFirstLetters(data.weather[0].description);

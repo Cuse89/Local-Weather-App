@@ -57,7 +57,7 @@ updateUI = (weather) => {
     document.getElementById('humidity').innerHTML = weather.humidity;
     document.getElementById('wind').innerHTML = weather.wind;
     document.getElementById('direction').innerHTML = weather.direction;
-    document.getElementById('icon').innerHTML = `<img id="weather-icon" src="http://openweathermap.org/img/w/${weather.iconCode}.png"/>`;
+    document.getElementById('icon').innerHTML = `<img id="weather-icon" src="https://openweathermap.org/img/w/${weather.iconCode}.png"/>`;
 };
 
 getCurrentLocation = () => {

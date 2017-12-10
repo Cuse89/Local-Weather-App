@@ -51,6 +51,11 @@ body {
 #header-center {
     display: flex;
     flex-direction: row;
+    align-self: center;
+}
+
+#header-right {
+    align-self: center;
 }
 
 #geo-btn {

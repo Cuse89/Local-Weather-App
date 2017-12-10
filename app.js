@@ -57,7 +57,16 @@ updateUI = (weather) => {
     document.getElementById('humidity').innerHTML = weather.humidity;
     document.getElementById('wind').innerHTML = weather.wind;
     document.getElementById('direction').innerHTML = weather.direction;
-    document.getElementById('icon').innerHTML = `<img src="http://openweathermap.org/img/w/${weather.iconCode}.png"/>`;
+    document.getElementById('icon').innerHTML = `<img id="weather-icon" src="http://openweathermap.org/img/w/${weather.iconCode}.png"/>`;
+};
+
+getCurrentLocation = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        const location = window.prompt("Could not discover location. What's your city?");
+        updateByLocation(location);
+    };
 };
 
 showPosition = (position) => {
@@ -68,20 +77,20 @@ capitalizeFirstLetters = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-window.onload = () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        const location = window.prompt("Could not discover location. What's your city?");
-        updateByLocation(location);
-    }
-};
-
 locationSearch = (e) => {
     e.preventDefault();
     const location = document.getElementById('location-input').value;
     updateByLocation(location);
-}
+};
 
-document.getElementById('location-form').addEventListener('submit', locationSearch)
+setupEventListeners = () => {
+    document.getElementById('location-form').addEventListener('submit', locationSearch);
+    document.getElementById('geo-btn').addEventListener('click', getCurrentLocation);
+};
 
+init = () => {
+    getCurrentLocation();
+    setupEventListeners();
+};
+
+init();

@@ -10,22 +10,27 @@
 <body>
     <div id="header">
         <h4 id="title">Weather Report</h4>
-        <h2 id="location"></h2>
+        <div id="header-center">
+            <h2 id="location"></h2>
+            <button id="geo-btn">
+                <img id="geo-icon" title="Get weather for current location"
+                src="images/geo.png" />
+            </button>
+            
+        </div>
+        
+        <div>
+           
         <form id="location-form">
-            <input id="location-input" type="text" name="location-input" placeholder="Search by location name">
+            <input id="location-input" type="text" name="location-input" placeholder="Search by location">
             <input id="search" type="submit" value="Search">
-        </form>
-
+        </form> 
+        </div>
+        
     </div>
-
-
-
     <div id="content" class="container">
-
         <p id="degrees">
             <span class="bold" id="temp"></span> °C</p>
-
-
         <div id="icon"></div>
         <p class="bold" id="description"></p>
         <p>Humidity:
